@@ -23,68 +23,86 @@ export class ItemsEntity {
 
     @Column({
         name: 'SKU',
-        type: "int"
+        type: "decimal"
     })
     sku: number;
 
     @Column({
         name: 'VARIACION',
-        type: "int"
+        type: "decimal"
     })
     variacion: number;
 
     @Column({
         name: 'VENTA_PROMEDIO',
-        type: "int"
+        type: "decimal"
     })
     ventaPromedio: number;
 
     @Column({
         name: 'PONDERADO_ROTACION',
-        type: "int"
+        type: "varchar"
     })
-    ponderadoRotacion: number;
+    ponderadoRotacion: string;
 
     @Column({
         name: 'PROYECCION_ABS',
-        type: "int"
+        type: "decimal"
     })
     proyeccionAbs: number;
 
     @Column({
         name: 'MARGEN',
-        type: "int"
+        type: "decimal"
     })
     margen: number;
 
     @Column({
         name: 'PORCENTAJE',
-        type: "int"
+        type: "decimal"
     })
     porcentaje: number;
 
     @Column({
         name: 'PORCENTAJE_ACUMULADO',
-        type: "int"
+        type: "decimal"
     })
     porcentajeAcumulado: number;
 
     @Column({
         name: 'CLASIF_MARGEN',
-        type: "int"
+        type: "varchar"
     })
-    clasifMargen: number;
+    clasifMargen: string;
+
+    @Column({
+        name: 'CANTIDAD_VENTAS',
+        type: "decimal"
+    })
+    cantidadVentas: number;
+
+    @Column({
+        name: 'PORCENTAJE_VENTAS',
+        type: "decimal"
+    })
+    porcentajeVentas: number;
+
+    @Column({
+        name: 'PORCENTAJE_ACUMULADO_VENTAS',
+        type: "decimal"
+    })
+    porcentajeAcumuladoVentas: number;
 
 
     @Column({
-        name: 'CLASIF_CANT_VTS',
-        type: "int"
+        name: 'CLASIF_CANT_VENTAS',
+        type: "varchar"
     })
-    clasifCantVts: number;
+    clasifCantVts: string;
 
     @Column({
-        name: 'CLASIF_MARG_VTS',
-        type: "int"
+        name: 'CLASIF_ROT_MARG_VENTAS',
+        type: "varchar"
     })
-    clasifMargVts: number;
+    clasifMargVts: string;
 }
