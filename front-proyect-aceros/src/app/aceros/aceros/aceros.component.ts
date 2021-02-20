@@ -50,6 +50,7 @@ export class AcerosComponent implements OnInit {
     })
     this._acerosRestService.obtenerFiltros('sku').subscribe(skus => {
       this.skus = skus;
+
     })
     this._acerosRestService.obtenerFiltros('unidadNegocio').subscribe(unidadNegocios => {
       this.unidadNegocios = unidadNegocios;

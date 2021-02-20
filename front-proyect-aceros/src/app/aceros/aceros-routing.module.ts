@@ -6,6 +6,11 @@ const routes: Routes = [
   {
     path: 'tabla-aceros',
     component: AcerosComponent
+  },
+  {
+    path: '',
+    redirectTo: 'tabla-aceros',
+    pathMatch: 'full'
   }
 ];
 

@@ -1,5 +1,6 @@
-import {Body, Controller, Get, Post, Query} from '@nestjs/common';
+import {Body, Controller, Get, Post, Query, UseInterceptors} from '@nestjs/common';
 import {ItemsService} from "./items.service";
+import {FileInterceptor} from "@nestjs/platform-express";
 
 @Controller('items')
 export class ItemsController {
@@ -29,6 +30,7 @@ export class ItemsController {
         console.log(filtros.arreglo,'filtros');
         return await this._itemsService.consultaFiltros(filtros.arreglo)
     }
+
 }
 
 

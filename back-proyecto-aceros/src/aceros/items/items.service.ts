@@ -26,12 +26,11 @@ export class ItemsService {
             .distinctOn([`items.${campo}`])
             .getMany() as any[]).map(respCampo => {
             return {
-                    name: respCampo[`${campo}`],
-                    code: respCampo[`${campo}`]
+                    name: respCampo[campo],
+                    code: respCampo[campo]
                 }
         })
         return arregloItems;
-
     }
 
     consultaFiltros(filtros){
