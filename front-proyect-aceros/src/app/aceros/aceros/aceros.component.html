@@ -1,0 +1,203 @@
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+
+    <a class="navbar-brand">
+      <img src="assets/logo-acero.png" >
+    </a>
+
+</nav>
+
+<div class="row" style="padding-top: 2rem; padding-bottom: 2rem; align-content: center">
+  <div class="col-sm-1">
+
+  </div>
+  <div class="col-sm-1">
+    <p-dropdown [options]="marcas"
+                optionLabel="name"
+                placeholder="Marca"
+                [(ngModel)]="selectMarca"
+                [virtualScroll]="true"
+                [showClear]="true"
+                [filter]="true"
+                filterBy="name"
+                (onChange)="seleccionoMarca($event)"
+                [style]="{'width':'150px'}"
+    >
+    </p-dropdown>
+  </div>
+  <div class="col-sm-1">
+    <p-dropdown [options]="skus"
+                optionLabel="name"
+                placeholder="SKU"
+                [(ngModel)]="selectSku"
+                [virtualScroll]="true"
+                [showClear]="true"
+                [filter]="true"
+                filterBy="name"
+                (onChange)="seleccionoSku($event)"
+                [style]="{'width':'150px'}"
+    >
+
+    </p-dropdown>
+  </div>
+  <div class="col-sm-1">
+    <p-dropdown [options]="unidadNegocios"
+                optionLabel="name"
+                placeholder="Unidad de negocio"
+                [(ngModel)]="selectUnidadNegocio"
+                [virtualScroll]="true"
+                [showClear]="true"
+                [filter]="true"
+                filterBy="name"
+                (onChange)="seleccionoUnidadNegocio($event)"
+                [style]="{'width':'150px'}"
+
+    >
+    </p-dropdown>
+  </div>
+
+  <div class="col-sm-1">
+    <p-dropdown [options]="ventasPromedio"
+                optionLabel="name"
+                placeholder="Venta promedio"
+                [(ngModel)]="selectVentaPromedio"
+                [virtualScroll]="true"
+                [showClear]="true"
+                [filter]="true"
+                filterBy="name"
+                (onChange)="seleccionoVentaPromedio($event)"
+                [style]="{'width':'150px'}"
+
+    >
+
+    </p-dropdown>
+  </div>
+  <div class="col-sm-1">
+    <p-dropdown [options]="proyecciones"
+                optionLabel="name"
+                placeholder="Proyección"
+                [(ngModel)]="selectProyeccion"
+                [virtualScroll]="true"
+                [showClear]="true"
+                [filter]="true"
+                filterBy="name"
+                (onChange)="seleccionoProyeccion($event)"
+                [style]="{'width':'150px'}"
+
+    >
+
+    </p-dropdown>
+  </div>
+  <div class="col-sm-1">
+    <p-dropdown [options]="clasificacion"
+                optionLabel="name"
+                placeholder="Clasificación"
+                [(ngModel)]="selectClasificacion"
+                [virtualScroll]="true"
+                [showClear]="true"
+                [filter]="true"
+                filterBy="name"
+                (onChange)="seleccionoClasificacion($event)"
+                [style]="{'width':'150px'}"
+    >
+    </p-dropdown>
+  </div>
+
+  <div class="col-sm-1">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="limpiarFiltros()"
+    >
+      LIMPIAR FILTROS
+    </button>
+  </div>
+
+
+</div>
+
+
+
+<p-table
+  [value]="datosAceros"
+  [columns]="cabeceras"
+  [responsive]="true"
+  [scrollable]="true"
+  [rows]="5"
+  [paginator]="true"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let cabecera of cabeceras" style="text-align: center"
+      > {{cabecera.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns" style="text-align: center">
+        <div *ngIf="col.header ==='CANTIDAD VENTAS'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header === 'CLASIFICACIÓN'" style="text-align: left">
+          <strong>
+            Clasificación cantidad de ventas:
+          </strong> {{rowData.clasifCantVts}}
+          <p></p>
+          <strong>
+            Clasificación margen ventas:
+          </strong> {{rowData.clasifMargVts}}
+          <p></p>
+          <strong>
+            Clasificación margen:
+          </strong> {{rowData.clasifMargen}}
+        </div>
+        <div *ngIf="col.header ==='MARCA'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header ==='MARGEN'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header ==='PONDERADO ROTACIÓN'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header ==='PORCENTAJES'" style="text-align: left">
+          <strong>
+            Porcentaje:
+          </strong> {{rowData.porcentaje | percent:'1.2-3'  }}
+          <p></p>
+          <strong>
+            Porcentaje acumulado:
+          </strong> {{rowData.porcentajeAcumulado | percent:'1.2-3'}}
+          <p></p>
+          <strong>
+            Porcentaje acumulado ventas:
+          </strong> {{rowData.porcentajeAcumuladoVentas | percent:'1.2-3' }}
+          <p></p>
+          <strong>
+            Porcentaje ventas:
+          </strong> {{rowData.porcentajeVentas | percent:'1.2-3'}}
+        </div>
+        <div *ngIf="col.header ==='PROYECCIÓN ABSOLUTO'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header ==='SKU'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header ==='UNIDAD NEGOCIO'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header ==='VARIACIÓN'">
+          {{rowData[col.field]}}
+        </div>
+        <div *ngIf="col.header ==='VENTA PROMEDIO'">
+          {{rowData[col.field]}}
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+
+
+
+</p-table>

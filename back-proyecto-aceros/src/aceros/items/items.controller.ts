@@ -1,10 +1,35 @@
-import {Controller, Get} from '@nestjs/common';
+import {Body, Controller, Get, Post, Query} from '@nestjs/common';
+import {ItemsService} from "./items.service";
 
 @Controller('items')
 export class ItemsController {
-    @Get()
-    async findAll() {
-        return 'this is controller ok'
+
+    constructor(
+        private readonly _itemsService: ItemsService
+    ) {
     }
 
+
+    @Get('obtener-todos')
+    async findAll() {
+        return await this._itemsService.obtenerTodos()
+    }
+
+    @Get('obtener-filtros')
+     obtenerFiltros(
+         @Query('campo') campo: string,
+    ){
+        return  this._itemsService.obtenerItems(campo)
+    }
+
+    @Post('consulta-filtros')
+    async obtenerConsultaFiltros(
+        @Body() filtros: {arreglo: any[]}
+    ) {
+        console.log(filtros.arreglo,'filtros');
+        return await this._itemsService.consultaFiltros(filtros.arreglo)
+    }
 }
+
+
+
