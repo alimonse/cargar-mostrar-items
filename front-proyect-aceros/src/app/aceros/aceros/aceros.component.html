@@ -8,112 +8,103 @@
 </nav>
 
 <div class="row" style="padding-top: 2rem; padding-bottom: 2rem; align-content: center">
-  <div class="col-sm-1">
+  <div class="col-sm-6">
+    <div class="row">
+      <div class="col-sm-2">
+        <p-dropdown [options]="marcas"
+                    optionLabel="name"
+                    placeholder="Marca"
+                    [(ngModel)]="selectMarca"
+                    [virtualScroll]="true"
+                    [showClear]="true"
+                    [filter]="true"
+                    filterBy="name"
+                    (onChange)="seleccionoMarca($event)"
+        >
+        </p-dropdown>
+      </div>
+      <div class="col-sm-2">
+        <p-dropdown [options]="skus"
+                    optionLabel="name"
+                    placeholder="SKU"
+                    [(ngModel)]="selectSku"
+                    [virtualScroll]="true"
+                    [showClear]="true"
+                    [filter]="true"
+                    filterBy="name"
+                    (onChange)="seleccionoSku($event)"
+        >
+
+        </p-dropdown>
+      </div>
+      <div class="col-sm-2">
+        <p-dropdown [options]="unidadNegocios"
+                    optionLabel="name"
+                    placeholder="Unidad de negocio"
+                    [(ngModel)]="selectUnidadNegocio"
+                    [virtualScroll]="true"
+                    [showClear]="true"
+                    [filter]="true"
+                    filterBy="name"
+                    (onChange)="seleccionoUnidadNegocio($event)"
+
+        >
+        </p-dropdown>
+      </div>
+
+      <div class="col-sm-2">
+        <p-dropdown [options]="ventasPromedio"
+                    optionLabel="name"
+                    placeholder="Venta promedio"
+                    [(ngModel)]="selectVentaPromedio"
+                    [virtualScroll]="true"
+                    [showClear]="true"
+                    [filter]="true"
+                    filterBy="name"
+                    (onChange)="seleccionoVentaPromedio($event)"
+        >
+        </p-dropdown>
+      </div>
+      <div class="col-sm-2">
+        <p-dropdown [options]="proyecciones"
+                    optionLabel="name"
+                    placeholder="Proyección"
+                    [(ngModel)]="selectProyeccion"
+                    [virtualScroll]="true"
+                    [showClear]="true"
+                    [filter]="true"
+                    filterBy="name"
+                    (onChange)="seleccionoProyeccion($event)"
+        >
+        </p-dropdown>
+      </div>
+      <div class="col-sm-2">
+        <p-dropdown [options]="clasificacion"
+                    optionLabel="name"
+                    placeholder="Clasificación"
+                    [(ngModel)]="selectClasificacion"
+                    [virtualScroll]="true"
+                    [showClear]="true"
+                    [filter]="true"
+                    filterBy="name"
+                    (onChange)="seleccionoClasificacion($event)"
+        >
+        </p-dropdown>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="limpiarFiltros()"
+      >
+        LIMPIAR FILTROS
+      </button>
+
 
   </div>
-  <div class="col-sm-1">
-    <p-dropdown [options]="marcas"
-                optionLabel="name"
-                placeholder="Marca"
-                [(ngModel)]="selectMarca"
-                [virtualScroll]="true"
-                [showClear]="true"
-                [filter]="true"
-                filterBy="name"
-                (onChange)="seleccionoMarca($event)"
-                [style]="{'width':'150px'}"
-    >
-    </p-dropdown>
-  </div>
-  <div class="col-sm-1">
-    <p-dropdown [options]="skus"
-                optionLabel="name"
-                placeholder="SKU"
-                [(ngModel)]="selectSku"
-                [virtualScroll]="true"
-                [showClear]="true"
-                [filter]="true"
-                filterBy="name"
-                (onChange)="seleccionoSku($event)"
-                [style]="{'width':'150px'}"
-    >
-
-    </p-dropdown>
-  </div>
-  <div class="col-sm-1">
-    <p-dropdown [options]="unidadNegocios"
-                optionLabel="name"
-                placeholder="Unidad de negocio"
-                [(ngModel)]="selectUnidadNegocio"
-                [virtualScroll]="true"
-                [showClear]="true"
-                [filter]="true"
-                filterBy="name"
-                (onChange)="seleccionoUnidadNegocio($event)"
-                [style]="{'width':'150px'}"
-
-    >
-    </p-dropdown>
-  </div>
-
-  <div class="col-sm-1">
-    <p-dropdown [options]="ventasPromedio"
-                optionLabel="name"
-                placeholder="Venta promedio"
-                [(ngModel)]="selectVentaPromedio"
-                [virtualScroll]="true"
-                [showClear]="true"
-                [filter]="true"
-                filterBy="name"
-                (onChange)="seleccionoVentaPromedio($event)"
-                [style]="{'width':'150px'}"
-
-    >
-
-    </p-dropdown>
-  </div>
-  <div class="col-sm-1">
-    <p-dropdown [options]="proyecciones"
-                optionLabel="name"
-                placeholder="Proyección"
-                [(ngModel)]="selectProyeccion"
-                [virtualScroll]="true"
-                [showClear]="true"
-                [filter]="true"
-                filterBy="name"
-                (onChange)="seleccionoProyeccion($event)"
-                [style]="{'width':'150px'}"
-
-    >
-
-    </p-dropdown>
-  </div>
-  <div class="col-sm-1">
-    <p-dropdown [options]="clasificacion"
-                optionLabel="name"
-                placeholder="Clasificación"
-                [(ngModel)]="selectClasificacion"
-                [virtualScroll]="true"
-                [showClear]="true"
-                [filter]="true"
-                filterBy="name"
-                (onChange)="seleccionoClasificacion($event)"
-                [style]="{'width':'150px'}"
-    >
-    </p-dropdown>
-  </div>
-
-  <div class="col-sm-1">
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="limpiarFiltros()"
-    >
-      LIMPIAR FILTROS
-    </button>
-  </div>
-
-
 </div>
 
 
@@ -123,7 +114,7 @@
   [columns]="cabeceras"
   [responsive]="true"
   [scrollable]="true"
-  [rows]="5"
+  [rows]="15"
   [paginator]="true"
 >
   <ng-template pTemplate="header">
@@ -139,18 +130,8 @@
         <div *ngIf="col.header ==='CANTIDAD VENTAS'">
           {{rowData[col.field]}}
         </div>
-        <div *ngIf="col.header === 'CLASIFICACIÓN'" style="text-align: left">
-          <strong>
-            Clasificación cantidad de ventas:
-          </strong> {{rowData.clasifCantVts}}
-          <p></p>
-          <strong>
-            Clasificación margen ventas:
-          </strong> {{rowData.clasifMargVts}}
-          <p></p>
-          <strong>
-            Clasificación margen:
-          </strong> {{rowData.clasifMargen}}
+        <div *ngIf="col.header === 'CLASIFICACIÓN ROTACIÓN MARGEN VENTAS'" style="text-align: center">
+         {{rowData.clasifMargVts}}
         </div>
         <div *ngIf="col.header ==='MARCA'">
           {{rowData[col.field]}}

@@ -61,7 +61,7 @@ export class AcerosComponent implements OnInit {
     this._acerosRestService.obtenerFiltros('proyeccionAbs').subscribe(proyecciones => {
       this.proyecciones = proyecciones;
     })
-    this._acerosRestService.obtenerFiltros('clasifCantVts').subscribe(clasificacion => {
+    this._acerosRestService.obtenerFiltros('clasifMargVts').subscribe(clasificacion => {
       this.clasificacion = clasificacion;
     })
 
@@ -74,22 +74,25 @@ export class AcerosComponent implements OnInit {
     })
   }
 
-  cabeceras: columnsCabeceras[] = [ {field: 'cantidadVentas',  header: 'CANTIDAD VENTAS'},
-    {field: 'clasifCantVts',  header: 'CLASIFICACIÓN'},
+  cabeceras: columnsCabeceras[] = [
+    {field: 'unidadNegocio',  header: 'UNIDAD NEGOCIO'},
+    {field: 'marca',  header: 'MARCA'},
+    {field: 'sku',  header: 'SKU'},
+    {field: 'variacion',  header: 'VARIACIÓN'},
+    {field: 'ventaPromedio',  header: 'VENTA PROMEDIO'},
+    {field: 'proyeccionAbs',  header: 'PROYECCIÓN ABSOLUTO'},
+    {field: 'clasifMargVts',  header: 'CLASIFICACIÓN ROTACIÓN MARGEN VENTAS'},
+
+    // {field: 'cantidadVentas',  header: 'CANTIDAD VENTAS'},
+    // {field: 'clasifCantVts',  header: 'CLASIFICACIÓN'},
     // {field: 'clasifMargVts',  header: 'CLASIFICACIÓN'},
     // {field: 'clasifMargen',  header: 'CLASIFICACIÓN'},
-    {field: 'marca',  header: 'MARCA'},
-    {field: 'margen',  header: 'MARGEN'},
-    {field: 'ponderadoRotacion',  header: 'PONDERADO ROTACIÓN'},
-    {field: 'porcentaje',  header: 'PORCENTAJES'},
+    // {field: 'margen',  header: 'MARGEN'},
+    // {field: 'ponderadoRotacion',  header: 'PONDERADO ROTACIÓN'},
+    // {field: 'porcentaje',  header: 'PORCENTAJES'},
     // {field: 'porcentajeAcumulado',  header: 'PORCENTAJE ACUMULADO'},
     // {field: 'porcentajeAcumuladoVentas',  header: 'PORCENTAJE ACUMULADO VENTAS'},
     // {field: 'porcentajeVentas',  header: 'PORCENTAJE VENTAS'},
-    {field: 'proyeccionAbs',  header: 'PROYECCIÓN ABSOLUTO'},
-    {field: 'sku',  header: 'SKU'},
-    {field: 'unidadNegocio',  header: 'UNIDAD NEGOCIO'},
-    {field: 'variacion',  header: 'VARIACIÓN'},
-    {field: 'ventaPromedio',  header: 'VENTA PROMEDIO'},
  ]
 
   cities = [
@@ -170,7 +173,7 @@ export class AcerosComponent implements OnInit {
   }
 
   seleccionoClasificacion(event: any) {
-    this.limpiarArregloFiltros('clasifCantVts',this.arregloFiltros,  event.value);
+    this.limpiarArregloFiltros('clasifMargVts',this.arregloFiltros,  event.value);
     this._acerosRestService.consultaFiltros(this.arregloFiltros).subscribe(resp => {
       this.datosAceros = resp
     })
